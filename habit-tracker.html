@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Habit Tracker</title>
+  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+  <style>
+    body {
+      font-family: "Poppins", sans-serif;
+      background-color: #1aacb69f;
+      color: #fff;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      margin: 0;
+      background-image: url('http://transparenttextures.com/patterns/diagmonds.png');
+      background-size: 50px 50px;
+    }
+
+    h1 {
+      margin-bottom: 20px;
+      animation: fadeIn 2s ease-in-out;
+    }
+
+    nav {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      margin-bottom: 20px;
+    }
+
+    .button {
+      margin: 10px;
+      padding: 15px 30px;
+      background-color: #7a9da8;
+      color: #fff;
+      border: 1px solid #fff;
+      box-shadow: #e0b0b0 5px 5px 0, #fff 2px 2px 0;
+      border-radius: 10px;
+      font-size: 1em;
+      text-decoration: none;
+      text-align: center;
+      transition: background-color 0.3s, transform 0.3s;
+    }
+
+    .button:hover {
+      background-color: #e0b0b0;
+      transform: translateY(-2px);
+    }
+
+    .main-container {
+      padding: 20px;
+      flex: 1;
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .habit-form {
+      margin-bottom: 20px;
+      width: 80%;
+      max-width: 600px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .habit-form input,
+    .habit-form select,
+    .habit-form button {
+      width: 100%;
+      margin: 5px 0;
+      padding: 10px;
+      border: 2px solid #fff;
+      background: #0a0a0a73;
+      color: #fff;
+      box-shadow: 5px 5px 0 #b37070, 10px 10px 0 #fff;
+      border-radius: 5px;
+    }
+
+    .habit-form button {
+      background-color: #7a9da8;
+      cursor: pointer;
+      font-size: 1em;
+      transition: background-color 0.3s, transform 0.3s;
+    }
+
+    .habit-form button:hover {
+      background-color: #e0b0b0;
+      transform: translateY(-2px);
+    }
+
+    .habit-list {
+      width: 80%;
+      max-width: 600px;
+      margin-top: 20px;
+    }
+
+    .habit-item {
+      background: #91baf073;
+      margin-bottom: 10px;
+      padding: 10px;
+      border: 2px solid #fff;
+      box-shadow: 5px 5px 0 #b37070, 10px 10px 0 #fff;
+      border-radius: 5px;
+      position: relative;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .habit-item .habit-info {
+      display: flex;
+      justify-content: space-between;
+    }
+
+    .habit-item .habit-controls {
+      display: flex;
+      justify-content: flex-end;
+    }
+
+    .habit-item .progress-bar {
+      background: #ec8787;
+      height: 10px;
+      border-radius: 5px;
+      overflow: hidden;
+      margin-top: 10px;
+    }
+
+    .habit-item .progress-bar div {
+      height: 100%;
+      background: rgb(184, 241, 184);
+    }
+
+    .rewards-container {
+      text-align: center;
+      margin-top: 20px;
+    }
+
+    .rewards-container p {
+      font-size: 1.2em;
+    }
+
+    .xp-bar {
+      margin-top: 20px;
+      background: #555;
+      height: 20px;
+      border-radius: 5px;
+      overflow: hidden;
+      position: relative;
+    }
+
+    .xp-bar div {
+      height: 100%;
+      background: rgb(182, 240, 182);
+      width: 0;
+    }
+
+    .xp-bar span {
+      position: absolute;
+      width: 100%;
+      text-align: center;
+      line-height: 20px;
+    }
+
+    @keyframes fadeIn {
+      from {
+        opacity: 0;
+      }
+      to {
+        opacity: 1;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1 class="text-6xl font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-blue-200 to-pink-200 ">Habit Tracker</h1>
+    <nav>
+      <a href="index.html" class="button">Home</a>
+    </nav>
+  </header>
+  <main class="main-container">
+    <div class="habit-form space-y-5 ">
+      <input type="text" id="habitName" placeholder="Habit Name">
+      <input type="datetime-local" id="reminderTime">
+      <select id="habitCategory">
+        <option value="Health">Health</option>
+        <option value="Productivity">Productivity</option>
+        <option value="Wellness">Wellness</option>
+      </select>
+      <button id="addHabit">Add Habit</button>
+    </div>
+    <div class="habit-list" id="habitsList">
+      <!-- Habits will be dynamically added here -->
+    </div>
+    <div class="rewards-container">
+      <p>Total Points: <span id="totalPoints">0</span></p>
+      <div class="xp-bar">
+        <div style="width: 0%"></div>
+        <span id="xpLevel">Level 1: 0/100 XP</span>
+      </div>
+    </div>
+  </main>
+  <footer class="footer p-4 text-center">
+    Made with ❤️ by <a href="https://github.com/DaPandamonium" onclick="event.preventDefault();">DaPanda</a>
+  </footer>
+  <script src="app.js"></script>
+</body>
+</html>

@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Reminders</title>
+  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+  <style>
+    body {
+      font-family: "Poppins", sans-serif;
+      background-color: #1aacb69f;
+      color: #fff;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      margin: 0;
+      background-image: url('http://transparenttextures.com/patterns/diagmonds.png');
+      background-size: 50px 50px;
+    }
+
+    h1 {
+      margin-bottom: 20px;
+      animation: fadeIn 2s ease-in-out;
+    }
+
+    nav {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      margin-bottom: 20px;
+    }
+
+    .button {
+      margin: 10px;
+      padding: 15px 30px;
+      background-color: #7a9da8;
+      color: #fff;
+      border: 1px solid #fff;
+      box-shadow: #e0b0b0 5px 5px 0, #fff 2px 2px 0;
+      border-radius: 10px;
+      font-size: 1em;
+      text-decoration: none;
+      text-align: center;
+      transition: background-color 0.3s, transform 0.3s;
+    }
+
+    .button:hover {
+      background-color: #e0b0b0;
+      transform: translateY(-2px);
+    }
+
+    .reminders-container {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      width: 100%;
+    }
+
+    .reminder-input {
+      width: 80%;
+      max-width: 600px;
+      margin-bottom: 20px;
+    }
+
+    .reminder-input input,
+    .reminder-input textarea {
+      width: 100%;
+      padding: 10px;
+      font-size: 1em;
+      border: 2px solid #fff;
+      background: #0a0a0a73;
+      color: #fff;
+      box-shadow: 5px 5px 0 #b37070, 10px 10px 0 #fff;
+      border-radius: 5px;
+      margin-bottom: 10px;
+    }
+
+    .reminder-input button {
+      width: 100%;
+      padding: 10px;
+      margin-top: 10px;
+      background-color: #7a9da8;
+      color: #fff;
+      border: 1px solid #fff;
+      border-radius: 5px;
+      cursor: pointer;
+      font-size: 1em;
+      transition: background-color 0.3s, transform 0.3s;
+    }
+
+    .reminder-input button:hover {
+      background-color: #e0b0b0;
+      transform: translateY(-2px);
+    }
+
+    .reminders-list {
+      width: 80%;
+      max-width: 600px;
+    }
+
+    .reminder-item {
+      background: #91baf073;
+      color: #fff;
+      padding: 10px;
+      margin-bottom: 10px;
+      border: 2px solid #fff;
+      box-shadow: 5px 5px 0 #1a1a1a, 10px 10px 0 #fff;
+      border-radius: 5px;
+    }
+
+    .reminder-item button {
+      background: #7be9cd;
+      color: #fff;
+      border: none;
+      padding: 5px 10px;
+      cursor: pointer;
+      font-size: 0.8em;
+      margin-left: 10px;
+    }
+
+    .reminder-item button:hover {
+      background: #e96767;
+    }
+
+    @keyframes fadeIn {
+      from {
+        opacity: 0;
+      }
+      to {
+        opacity: 1;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1 class="text-6xl font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-blue-200 to-pink-200 ">Reminders</h1>
+    <nav>
+      <a href="index.html" class="button">Home</a>
+    </nav>
+  </header>
+  <main class="flex-1 w-full">
+    <div class="reminders-container">
+      <div class="reminder-input space-y-5">
+        <input type="text" id="reminderTitle" placeholder="Reminder Title">
+        <textarea id="reminderText" placeholder="Reminder Text"></textarea>
+        <input type="datetime-local" id="reminderTime">
+        <button id="addReminder">Add Reminder</button>
+      </div>
+      <div class="reminders-list" id="remindersList">
+        <!-- Reminders will be dynamically added here -->
+      </div>
+    </div>
+  </main>
+  <footer class="footer p-4  text-center">
+    Made with ❤️ by <a href="https://github.com/DaPandamonium" onclick="event.preventDefault();">DaPanda</a>
+  </footer>
+  <script src="app.js"></script>
+</body>
+</html>
