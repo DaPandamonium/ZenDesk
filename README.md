@@ -1,4 +1,7 @@
 # Zen Desk
+
+![Pomodoro Timer](https://github.com/DaPandamonium/ZenDesk/blob/main/Screenshot%202024-07-14%20232632.png?raw=true)
+
 ---
 ## Introduction
 Welcome to **Zen Desk**, a multi-functional web application designed for the final checkpoint in the JavaScript course. This project aims to integrate multiple productivity tools including a Pomodoro timer, Todo list, Notes, Reminders, and a Habit Tracker. Additionally, it serves as a hands-on experience with Tailwind CSS, enhancing the user interface with a modern and responsive design.
